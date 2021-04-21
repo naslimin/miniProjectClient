@@ -33,7 +33,8 @@ export default function Login({ token }) {
     }
 
     const loginForm = () => (
-        <div className={styles.gridContainer}>
+        
+        <div className={styles.content_bg}>
             <div>
                 Username:
             </div>
@@ -44,6 +45,7 @@ export default function Login({ token }) {
                     onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
+            <br/>
             <div>
                 Password:
             </div>
@@ -61,15 +63,12 @@ export default function Login({ token }) {
     }
 
     return (
+        
         <Layout>
             <Head>
                 <title>Login</title>
             </Head>
             <div className={styles.container}>
-                <div className={styles.topnav}>
-                    <Link href="/login"><a> Login </a></Link>
-                    <Link href="/register"><a> Register </a></Link>
-                </div>
                 <h1>Login</h1>
                 <div><b>Token:</b> {token.substring(0, 15)}...
                 <button onClick={copyText}> Copy token </button>
@@ -80,8 +79,9 @@ export default function Login({ token }) {
                 </div>
                 <br />
                 {loginForm()}
+                <br/>
                 <div>
-                    <button> <Link href="/animas" onClick={login}><a> Login  </a></Link></button>
+                    <button> <Link href="/" onClick={login}><a> Login  </a></Link></button>
                     <button><Link href="/register"><a> Register </a></Link></button>
                 </div>
             </div>

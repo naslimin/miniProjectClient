@@ -5,6 +5,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("https://st2.depositphotos.com/3474805/6648/v/600/depositphotos_66481763-stock-illustration-cool-retro-movie-projector.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .content {
@@ -33,3 +36,8 @@
     box-sizing: border-box;
     font-size: 1.2rem;
 }
+
+
+
+
+
