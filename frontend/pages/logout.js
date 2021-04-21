@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import Navbar from '../components/navbar'
+//import Navbar from '../components/navbar'
 import { useEffect, useState } from 'react'
-import styles from '../styles/Home.module.css'
+//import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import config from '../config/config'
+import Link from 'next/link'
+import styles from '../styles/movies.module.css'
 
 export default function Logout({ token }) {
 
@@ -19,14 +21,23 @@ export default function Logout({ token }) {
         let result = await axios.get(`${config.URL}/logout`, { withCredentials: true })
         setStatus("Logout successful")
     }
- 
+
     return (
         <Layout>
             <Head>
                 <title>User profile</title>
             </Head>
             <div className={styles.container}>
-                <Navbar />
+                <div className={styles.topnav}>
+                    <Link href="/login"><a> Login </a></Link>
+                    <Link href="/getConfig"><a> Config </a></Link>
+                    <Link href="/admin"><a> Admin </a></Link>
+                    <Link href="/movies"><a> movies </a></Link>
+                    <Link href="/foo"><a> Foo </a></Link>
+                    <Link href="/profile"><a> Profile </a></Link>
+                    <Link href="/register"><a> Register </a></Link>
+                    <Link href="/"><a> Home </a></Link>
+                </div>
                 <h1>Logout</h1>
                 <div>
                     <h2> {status}  </h2>

@@ -7,14 +7,14 @@ import Navbar from "../components/navbar";
 import withAuth from "../components/withAuth";
 
 
-const URL = "http://localhost/api/pets";
-const URL2 = "http://localhost/api/income";
+const URL = "http://localhost:2000/api/movies";
+const URL2 = "http://localhost:2000/api/income";
 
 
 const fetcher = url => axios.get(url).then(res => res.data)
 const SWR1 = () => {
-    const [pets, setPets] = useState({ list: [{ id: 1, type: 'cat', age: 1, weight: 5, price: 2000 },] })
-    const [pet, setPet] = useState({})
+    const [movies, setmovies] = useState({})
+    const [pet, setPet] = useState({})    
     const [id, setId] = useState(0)
     const [type, setType] = useState('')
     const [age, setAge] = useState(0)
@@ -25,7 +25,7 @@ const SWR1 = () => {
 
 
     useEffect(() => {
-        getPets();
+        getmovies();
         getIncome();
         profileUser();
       }, []);
@@ -43,10 +43,10 @@ const SWR1 = () => {
         }
       };
     
-    const getPets = async () => {
-        let pets = await axios.get(URL)
-        setPets(pets.data)
-        //console.log('Pet:', pets.data)
+    const getmovies = async () => {
+        let movies = await axios.get(URL)
+        setmovies(movies.data)
+        //console.log('Pet:', movies.data)
     }
     const getIncome = async () => {
         let income = await axios.get(URL2)
@@ -55,16 +55,16 @@ const SWR1 = () => {
     }
 
     const getPet = async (id) => {
-        let pet = await axios.get(`${URL}${id}`)
+        let pet = await axios.get(`${URL}/${id}`)
         console.log('bear id: ', pet.data)
         setPet({ id: pet.data.id, type: pet.data.type, weight: pet.data.weight, age: pet.data.age, price: pet.data.price })
     }
 
 
 
-    const printPets = () => {
-        if (pets && pets.length)
-            return pets.map((pet, index) =>
+    const printmovies = () => {
+        if (movies && movies.length)
+            return movies.map((pet, index) =>
                 <li className={styles.listItem} key={index}>
                     <h6>Id:{(pet) ? pet.id : 0}</h6>
                     <h6>Type:{(pet) ? pet.type : '-'}</h6>
@@ -86,21 +86,21 @@ const SWR1 = () => {
 
 
     const addPet = async (type, age, weight, price) => {
-        let pets = await axios.post(URL, { type, age, weight, price })
-        setPets(pets.data)
+        let movies = await axios.post(URL, { type, age, weight, price })
+        setmovies(movies.data)
     }
 
 
     const deletePet = async (id) => {
-        const result = await axios.delete(`${URL}${id}`)
+        const result = await axios.delete(`${URL}/${id}`)
         console.log(result.data)
-        getPets()
+        getmovies()
     }
 
     const updatePet = async (id) => {
-        const result = await axios.put(`${URL}${id}`, { id, type, age, weight, price })
+        const result = await axios.put(`${URL}/${id}`, { id, type, age, weight, price })
         //console.log('student id update: ', result.data)
-        getPets()
+        getmovies()
     }
 
 
@@ -109,8 +109,8 @@ const SWR1 = () => {
           <Navbar />
         <h1>Admin</h1>
         <h2>Income:{printIncome()}</h2>
-        <h2>Pets</h2>
-        <ul className={styles.list}  >{printPets()}</ul>
+        <h2>movies</h2>
+        <ul className={styles.list}  >{printmovies()}</ul>
         selected pet: {pet.type} {pet.age} {pet.weight} {pet.price}
         <h2>Add pet</h2>
         <ul className={styles.formadd} >

@@ -1,8 +1,10 @@
 import Layout from '../components/layout'
 import Head from 'next/head'
 import config from '../config/config'
-import styles from '../styles/Home.module.css'
-import Navbar from '../components/navbar'
+//import styles from '../styles/Home.module.css'
+//import Navbar from '../components/navbar'
+import Link from 'next/link'
+import styles from '../styles/movies.module.css'
 
 const GetConfig = () => {
     return (<Layout>
@@ -10,7 +12,16 @@ const GetConfig = () => {
             <title>Get Config</title>
         </Head>
         <div className={styles.container}>
-            <Navbar />
+            <div className={styles.topnav}>
+                <Link href="/logout"><a> Logout </a></Link>
+                <Link href="/getConfig"><a> Config </a></Link>
+                <Link href="/admin"><a> Admin </a></Link>
+                <Link href="/movies"><a> movies </a></Link>
+                <Link href="/foo"><a> Foo </a></Link>
+                <Link href="/profile"><a> Profile </a></Link>
+                <Link href="/register"><a> Register </a></Link>
+                <Link href="/"><a> Home </a></Link>
+            </div>
             <h2> Get Configuration from ../config/config.js </h2>
             <b>Config: </b> {JSON.stringify(config)}
             <ul>

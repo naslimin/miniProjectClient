@@ -1,8 +1,7 @@
-
 const express = require('express'),
     app = express(),
     passport = require('passport'),
-    port = process.env.PORT || 8080,
+    port = process.env.PORT || 2000,
     cors = require('cors'),
     cookie = require('cookie')
 
@@ -30,7 +29,7 @@ let movies = {
         { id: 2, type: 'Fantase', name: "Persi Jacsant", ratting: 9.5, part: 2 , ToComeOut: 2007, time: 120}
     ]
 }
-let income = 0
+let ToComeOut = 0
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', { session: false }, (err, user, info) => {
@@ -48,7 +47,7 @@ router.post('/login', (req, res, next) => {
                     secure: process.env.NODE_ENV !== "development",
                     maxAge: 60 * 60,
                     sameSite: "strict",
-                    path: "/",
+                    movieh: "/",
                 })
             );
             res.statusCode = 200
@@ -66,7 +65,7 @@ router.get('/logout', (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: -1,
             sameSite: "strict",
-            path: "/",
+            movieh: "/",
         })
     );
     res.statusCode = 200
@@ -90,27 +89,27 @@ router.get('/foo',
     .get((req, res) => res.json(movies.list))
     .post((req, res) => {
         console.log(req.body)
-        let newPet = {}
-        newPet.id = (movies.list.length) ? movies.list[movies.list.length - 1].id + 1 : 1
-        newPet.type = req.body.type
-        newPet.name = req.body.name
-        newPet.ratting = req.body.ratting
-        newPet.part = req.body.part
-        newPet.ToComeOut = req.body.ToComeOut
-        newPet.time = req.body.time
-        movies = { "list": [...movies.list, newPet] }
+        let newmovie = {}
+        newmovie.id = (movies.list.length) ? movies.list[movies.list.length - 1].id + 1 : 1
+        newmovie.type = req.body.type
+        newmovie.name = req.body.name
+        newmovie.ratting = req.body.ratting
+        newmovie.part = req.body.part
+        newmovie.ToComeOut = req.body.ToComeOut
+        newmovie.time = req.body.time
+        movies = { "list": [...movies.list, newmovie] }
         res.json(movies.list)
     })
 
-router.route('/name/:pet_id')
+router.route('/name/:movie_id')
     .get((req, res) => {
-        const pet_id = req.params.pet_id
-        const id = movies.list.findIndex(item => +item.id === +pet_id)
+        const movie_id = req.params.movie_id
+        const id = movies.list.findIndex(item => +item.id === +movie_id)
         res.json(movies.list[id])
     })
     .put((req, res) => {
-        const pet_id = req.params.pet_id
-        const id = movies.list.findIndex(item => +item.id === +pet_id)
+        const movie_id = req.params.movie_id
+        const id = movies.list.findIndex(item => +item.id === +movie_id)
         movies.list[id].id = req.body.id
         movies.list[id].type = req.body.type
         movies.list[id].name = req.body.name
@@ -121,26 +120,26 @@ router.route('/name/:pet_id')
         res.json(movies.list)
     })
     .delete((req, res) => {
-        const pet_id = req.params.pet_id
-        movies.list = movies.list.filter(item => +item.id !== +pet_id)
+        const movie_id = req.params.movie_id
+        movies.list = movies.list.filter(item => +item.id !== +movie_id)
         res.json(movies.list)
     })
 
 
 
-router.route('/income')
-    .get((req, res) => res.json(income))
+router.route('/ToComeOut')
+    .get((req, res) => res.json(ToComeOut))
 
 
 
-router.route('/purchase/:pet_id')
+router.route('/purchase/:movie_id')
     .delete((req, res) => {
-        const pet_id = req.params.pet_id
-        const id = movies.list.findIndex(item => +item.id === +pet_id)
-        console.log('PetID: ', pet_id, 'ID: ', id)
+        const movie_id = req.params.movie_id
+        const id = movies.list.findIndex(item => +item.id === +movie_id)
+        console.log('movieID: ', movie_id, 'ID: ', id)
         if (id !== -1) {
-            income += movies.list[id].price
-            movies.list = movies.list.filter(item => +item.id !== +pet_id)
+            ToComeOut += movies.list[id].part
+            movies.list = movies.list.filter(item => +item.id !== +movie_id)
             res.json(movies.list)
         }
         else {

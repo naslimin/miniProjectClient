@@ -1,5 +1,5 @@
 
-const LOCAL_URL = 'http://localhost/api';
+const LOCAL_URL = 'http://localhost:2000/api';
 const PROD_URL = 'https://production.werapun.com/api';
 
 console.log('node env', process.env.NODE_ENV);

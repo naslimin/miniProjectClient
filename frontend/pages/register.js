@@ -6,6 +6,9 @@ import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
 import axios from 'axios'
 import config from '../config/config'
+import withAuth from "../components/withAuth";
+import Link from 'next/link'
+
 
 export default function Register({ token }) {
 
@@ -78,7 +81,7 @@ export default function Register({ token }) {
                 <title>Register</title>
             </Head>
             <div className={styles.container}>
-                <Navbar />
+                
                 <h1>Register</h1>
                 <div><b>Token:</b> {token.substring(0, 15)}...
                 <button
@@ -92,10 +95,7 @@ export default function Register({ token }) {
                 <div className={styles.content}>
                     {registerForm()}
                 </div>
-
-                <div>
-                    <button onClick={register}>Register</button>
-                </div>
+                <button> <Link href="/login" onClick={register}><a>Register </a></Link></button>
             </div>
         </Layout>
     )
