@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("https://media.architecturaldigest.in/wp-content/uploads/2020/03/modern-living-room-decor-1366x768.jpg");
   /*border: 10px solid blue;*/
 }
 
@@ -37,7 +38,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 48px;
   margin: 4px 2px;
   cursor: pointer;
 }
