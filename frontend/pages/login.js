@@ -1,12 +1,10 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import { useState } from 'react'
-//import Navbar from '../components/navbar'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import config from '../config/config'
 import Link from 'next/link'
-//import styles from '../styles/movies.module.css'
 
 export default function Login({ token }) {
 
@@ -70,13 +68,6 @@ export default function Login({ token }) {
             </Head>
             <div className={styles.container}>
                 <h1>Login</h1>
-                <div><b>Token:</b> {token.substring(0, 15)}...
-                <button onClick={copyText}> Copy token </button>
-                </div>
-                <br />
-                <div>
-                    Status:  {status}
-                </div>
                 <br />
                 {loginForm()}
                 <br/>

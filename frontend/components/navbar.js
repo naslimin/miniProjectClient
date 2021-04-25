@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import styles from '../styles/movies.module.css'
 
 const Navbar = () => (
     <div className={styles.topnav}>
@@ -7,7 +6,7 @@ const Navbar = () => (
         <Link href="/logout"><a> Logout </a></Link> 
         <Link href="/getConfig"><a> Config </a></Link> 
         <Link href="/admin"><a> Admin </a></Link> 
-        <Link href="/movies"><a> movies </a></Link> 
+        <Link href="/manu"><a> Manu </a></Link> 
         <Link href="/foo"><a> Foo </a></Link> 
         <Link href="/profile"><a> Profile </a></Link> 
         <Link href="/register"><a> Register </a></Link>  

@@ -3,17 +3,17 @@ import axios from 'axios'
 import Head from 'next/head'
 import styles from '../styles/admin.module.css'
 //import useSWR, { mutate } from 'swr'
-import Navbar from "../components/navbar";
+//import Navbar from "../components/navbar";
 import withAuth from "../components/withAuth";
 
 
-const URL = "http://localhost:2000/api/movies";
+const URL = "http://localhost:2000/api/manu";
 const URL2 = "http://localhost:2000/api/income";
 
 
 const fetcher = url => axios.get(url).then(res => res.data)
 const SWR1 = () => {
-    const [movies, setmovies] = useState({})
+    const [manu, setmanu] = useState({})
     const [pet, setPet] = useState({})    
     const [id, setId] = useState(0)
     const [type, setType] = useState('')
@@ -25,7 +25,7 @@ const SWR1 = () => {
 
 
     useEffect(() => {
-        getmovies();
+        getmanu();
         getIncome();
         profileUser();
       }, []);
@@ -43,10 +43,10 @@ const SWR1 = () => {
         }
       };
     
-    const getmovies = async () => {
-        let movies = await axios.get(URL)
-        setmovies(movies.data)
-        //console.log('Pet:', movies.data)
+    const getmanu = async () => {
+        let manu = await axios.get(URL)
+        setmanu(manu.data)
+        //console.log('Pet:', manu.data)
     }
     const getIncome = async () => {
         let income = await axios.get(URL2)
@@ -62,9 +62,9 @@ const SWR1 = () => {
 
 
 
-    const printmovies = () => {
-        if (movies && movies.length)
-            return movies.map((pet, index) =>
+    const printmanu = () => {
+        if (manu && manu.length)
+            return manu.map((pet, index) =>
                 <li className={styles.listItem} key={index}>
                     <h6>Id:{(pet) ? pet.id : 0}</h6>
                     <h6>Type:{(pet) ? pet.type : '-'}</h6>
@@ -86,31 +86,30 @@ const SWR1 = () => {
 
 
     const addPet = async (type, age, weight, price) => {
-        let movies = await axios.post(URL, { type, age, weight, price })
-        setmovies(movies.data)
+        let manu = await axios.post(URL, { type, age, weight, price })
+        setmanu(manu.data)
     }
 
 
     const deletePet = async (id) => {
         const result = await axios.delete(`${URL}/${id}`)
         console.log(result.data)
-        getmovies()
+        getmanu()
     }
 
     const updatePet = async (id) => {
         const result = await axios.put(`${URL}/${id}`, { id, type, age, weight, price })
         //console.log('student id update: ', result.data)
-        getmovies()
+        getmanu()
     }
 
 
 
     return (<div className={styles.container} >
-          <Navbar />
         <h1>Admin</h1>
         <h2>Income:{printIncome()}</h2>
-        <h2>movies</h2>
-        <ul className={styles.list}  >{printmovies()}</ul>
+        <h2>manu</h2>
+        <ul className={styles.list}  >{printmanu()}</ul>
         selected pet: {pet.type} {pet.age} {pet.weight} {pet.price}
         <h2>Add pet</h2>
         <ul className={styles.formadd} >

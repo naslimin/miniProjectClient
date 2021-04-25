@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 //import useSWR, { mutate } from 'swr'
 import Head from 'next/head'
-import styles from '../styles/movies.module.css'
+import styles from '../styles/index.module.css'
 //import Navbar from "../components/navbar";
 import withAuth from "../components/withAuth";
 import Link from 'next/link'
@@ -12,13 +12,12 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 
-const URL = "http://localhost:2000/api/movies";
-const URL2 = "http://localhost:2000/api/income";
+const URL = "http://localhost:2000/api/manu";
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
 const SWR2 = () => {
-    const [movies, setmovies] = useState({ list: [{ id: 1, type: 'Romantic', name: "Love at first side", ratting: 8, part: 1, ToComeOut: 2012, time: 125 },] })
+    const [manu, setmanu] = useState({ list: [{ id: 1, type: 'Romantic', name: "Love at first side", ratting: 8, part: 1, ToComeOut: 2012, time: 125 },] })
     const [movie, setmovie] = useState({})
     const [id, setId] = useState(0)
     const [type, setType] = useState('')
@@ -29,30 +28,30 @@ const SWR2 = () => {
     //const { data } = useSWR(URL2, fetcher)
 
 
-    useEffect(() => { getmovies() }, [])
+    useEffect(() => { getmanu() }, [])
 
-    const getmovies = async () => {
-        let movies = await axios.get(URL)
-        setmovies(movies.data)
-        //console.log('movie:', movies.data)
+    const getmanu = async () => {
+        let manu = await axios.get(URL)
+        setmanu(manu.data)
+        //console.log('movie:', manu.data)
     }
-    const buymovie = async (id) => {
+    const buymenu = async (id) => {
         const result = await axios.delete(`${URL2}${id}`)
         console.log(result.data)
-        getmovies()
+        getmanu()
     }
 
 
-    const printmovies = () => {
-        if (movies && movies.length)
-            return movies.map((movie, index) =>
+    const printmanu = () => {
+        if (manu && manu.length)
+            return manu.map((movie, index) =>
                 <li className={styles.listItem} key={index}>
                     <h6>Type:{(movie) ? movie.type : '-'}</h6>
                     <h6>Name:{(movie) ? movie.name : 0}</h6>
                     <h6>Ratting:{(movie) ? movie.ratting : 0}</h6>
                     <h6>Part:{(movie) ? movie.part : 0}</h6>
 
-                    <button onClick={() => buymovie(movie.id)} className={styles.byttonupdate} >Buy</button>
+                    <button onClick={() => buymenu(movie.id)} className={styles.byttonupdate} >Buy</button>
                 </li>
             )
         else
@@ -60,56 +59,17 @@ const SWR2 = () => {
     }
     return (<div className={styles.container}>
         <div className={styles.topnav}>
-            <Link href="/logout"><a> Logout </a></Link>
-            <Link href="/getConfig"><a> Config </a></Link>
-            <Link href="/admin"><a> Admin </a></Link>
-            <Link href="/movies"><a> movies </a></Link>
-            <Link href="/foo"><a> Foo </a></Link>
-            <Link href="/profile"><a> Profile </a></Link>
-            <Link href="/register"><a> Register </a></Link>
-            <Link href="/"><a> Home </a></Link>       
-            <MDBContainer>
-      <MDBCarousel
-        activeItem={1}
-        length={3}
-        showControls={true}
-        showIndicators={true}
-        className="z-depth-1"
-      >
-        <MDBCarouselInner>
-          <MDBCarouselItem itemId="1">
-            <MDBView>
-              <img
-                className="d-block w-100 fixP1"
-                src={pic1}
-                alt="First slide"
-              />
-            </MDBView>
-          </MDBCarouselItem>
-          <MDBCarouselItem itemId="2">
-            <MDBView>
-              <img
-                className="d-block w-100 fixP2"
-                src={pic2}
-                alt="Second slide"
-              />
-            </MDBView>
-          </MDBCarouselItem>
-          <MDBCarouselItem itemId="3">
-            <MDBView>
-              <img
-                className="d-block w-100 fixP3"
-                src={pic3}
-                alt="Third slide"
-              />
-            </MDBView>
-          </MDBCarouselItem>
-        </MDBCarouselInner>
-      </MDBCarousel>
-    </MDBContainer>
+        <Link href="/logout"><a> Logout </a></Link> 
+        <Link href="/getConfig"><a> Config </a></Link> 
+        <Link href="/login"><a> Admin </a></Link> 
+        <Link href="/manu"><a> Manu </a></Link> 
+        <Link href="/foo"><a> Foo </a></Link> 
+        <Link href="/profile"><a> Profile </a></Link> 
+        <Link href="/register"><a> Register </a></Link>  
+        <Link href="/"><a> Home </a></Link> 
         </div>
-        <h1>movies shop</h1>
-        <ul className={styles.list} >{printmovies()}</ul>
+        <h1>manu shop</h1>
+        <ul className={styles.list} >{printmanu()}</ul>
     </div>
     )
 

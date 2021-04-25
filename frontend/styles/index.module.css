@@ -1,0 +1,90 @@
+.container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://delisophy.com/wp-content/uploads/2020/03/food-and-beverages-1068x534.jpg");
+  }
+  
+  .list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 10px;
+    padding: 1px;
+    flex-wrap: wrap;
+    width: 80vw;
+  }
+  
+  .listItem {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    font-size: 1.4rem;
+    text-align: center;
+    color: antiquewhite;
+  }
+  
+  .byttonupdate{
+    background-color: blue;
+    border-radius: 10%;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 48px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #222222;
+    position: fixed;
+      top: 0;
+      width: 100%;
+  }
+  
+  .topnav a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button5:hover {
+    background-color: #555555;
+    color: white;
+  }
+  
+  
+  
+  
+  
+  

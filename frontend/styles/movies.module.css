@@ -5,8 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://media.architecturaldigest.in/wp-content/uploads/2020/03/modern-living-room-decor-1366x768.jpg");
-  /*border: 10px solid blue;*/
+  background-image: url("https://delisophy.com/wp-content/uploads/2020/03/food-and-beverages-1068x534.jpg");
 }
 
 .list {
@@ -24,9 +23,9 @@
   flex-direction: column;
   margin: 20px;
   padding: 10px;
-  border: 2px solid green;
   font-size: 1.4rem;
   text-align: center;
+  color: antiquewhite;
 }
 
 .byttonupdate{
@@ -45,7 +44,7 @@
 
 .topnav {
   overflow: hidden;
-  background-color: #509990;
+  background-color: #222222;
   position: fixed;
     top: 0;
     width: 100%;

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import config from '../config/config'
 import Link from 'next/link'
-import styles from '../styles/movies.module.css'
+import styles from '../styles/index.module.css'
 
 export default function Logout({ token }) {
 
@@ -32,7 +32,7 @@ export default function Logout({ token }) {
                     <Link href="/login"><a> Login </a></Link>
                     <Link href="/getConfig"><a> Config </a></Link>
                     <Link href="/admin"><a> Admin </a></Link>
-                    <Link href="/movies"><a> movies </a></Link>
+                    <Link href="/manu"><a> manu </a></Link>
                     <Link href="/foo"><a> Foo </a></Link>
                     <Link href="/profile"><a> Profile </a></Link>
                     <Link href="/register"><a> Register </a></Link>
